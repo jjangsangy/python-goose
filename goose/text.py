@@ -21,10 +21,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 import os
-import re
 import string
 
 import six
+import regex as re
 
 from goose.utils import FileHelper
 from goose.utils.encoding import smart_unicode

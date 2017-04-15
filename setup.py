@@ -50,20 +50,18 @@ CLASSIFIERS = [
     'Topic :: Software Development :: Libraries :: Python Modules']
 
 description = "Html Content / Article Extractor, web scrapping"
+requirements = ['Pillow', 'lxml', 'cssselect', 'jieba', 'nltk', 'six', 'requests', 'regex']
 
 # read long description
 try:
     with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
         long_description = f.read()
-except Exception:
+except FileNotFoundError:
     long_description = description
 
-requirements = ['Pillow', 'lxml', 'cssselect', 'jieba', 'nltk', 'six', 'requests']
 test_requirements = ['requests_mock']
-if sys.version_info[0] == 2:
-    requirements.append('beautifulsoup')
-    if sys.version_info[1] < 7:
-        test_requirements.append('unittest2')
+if sys.version_info[:2] < (2, 7):
+    test_requirements.append('unittest2')
 
 setup(name='goose-extractor',
       version=version.__version__,
